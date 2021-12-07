@@ -35,6 +35,9 @@ inputs:
     description: 'Git server host, default github.com'
     required: false
     default: github.com
+  clear_folder:
+    description: 'Folder path to delete'
+    required: false
 runs:
   using: 'docker'
   image: 'Dockerfile'
