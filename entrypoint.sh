@@ -29,8 +29,11 @@ git clone --single-branch --branch $INPUT_DESTINATION_BRANCH "https://x-access-t
 
 if [ ! -z "$INPUT_CLEAR_FOLDER" ]
 then
-  echo "Deleting files in folder: ${INPUT_CLEAR_FOLDER}"
-  rm -r "$CLONE_DIR/$INPUT_CLEAR_FOLDER"
+  if [ -d "$CLONE_DIR/$INPUT_CLEAR_FOLDER" ]; 
+  then
+    echo "Deleting files in folder: ${INPUT_CLEAR_FOLDER}"
+    rm -r "$CLONE_DIR/$INPUT_CLEAR_FOLDER"
+  fi
 fi
 
 if [ ! -z "$INPUT_RENAME" ]
