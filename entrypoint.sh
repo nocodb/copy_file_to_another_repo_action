@@ -27,6 +27,12 @@ git config --global user.email "$INPUT_USER_EMAIL"
 git config --global user.name "$INPUT_USER_NAME"
 git clone --single-branch --branch $INPUT_DESTINATION_BRANCH "https://x-access-token:$API_TOKEN_GITHUB@$INPUT_GIT_SERVER/$INPUT_DESTINATION_REPO.git" "$CLONE_DIR"
 
+if [ ! -z "$INPUT_CLEAR_FOLDER" ]
+then
+  echo "Deleting files in folder: ${INPUT_CLEAR_FOLDER}"
+  rm -r "$CLONE_DIR/$INPUT_CLEAR_FOLDER"
+fi
+
 if [ ! -z "$INPUT_RENAME" ]
 then
   echo "Setting new filename: ${INPUT_RENAME}"
